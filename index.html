@@ -31,37 +31,29 @@
       color: red;
       font-family: 'Courier New', monospace;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       height: 100vh;
       margin: 0;
       overflow: hidden;
+      padding-left: 1.5in; /* Padding from the left */
     }
+
     .container {
-      position: relative;
       z-index: 10; /* Ensure text is on top */
       text-align: left;
       white-space: nowrap;
       overflow: hidden;
       width: 0;
-      border-right: 0.15em solid red;
       animation: none;
-      padding-left: 1.5in; /* Margin from the left */
     }
+
     @keyframes typing {
       from {
         width: 0;
       }
       to {
         width: 100%;
-      }
-    }
-    @keyframes blink-caret {
-      from, to {
-        border-color: transparent;
-      }
-      50% {
-        border-color: red;
       }
     }
   </style>
@@ -113,7 +105,7 @@
       
       // Start text animation and last GIF loop at the same time
       if (currentGif === gifs.length - 1) {
-        textContainer.style.animation = 'typing 20s steps(400, end) forwards, blink-caret 0.75s step-end infinite';
+        textContainer.style.animation = 'typing 20s steps(400, end) forwards';
         setTimeout(function() {
           gifs[gifs.length - 1].style.animation = 'fadeOut 3s forwards';
         }, 20000);
