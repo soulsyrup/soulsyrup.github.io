@@ -13,6 +13,7 @@
       z-index: -1;
       object-fit: cover;
       display: none;
+      opacity: 1; /* Ensure opacity is 1 to override the fadeOut effect */
     }
 
     /* Add a fading effect */
@@ -28,22 +29,19 @@
     /* Body and text styling */
     body {
       background-color: black;
-      color: red;
       font-family: 'Courier New', monospace;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
       overflow: hidden;
+      height: 100vh;
     }
     .container {
-      text-align: left;
+      position: fixed;  /* make it on top */
+      z-index: 1;  /* on top of gifs */
+      color: red; /* text color */
+      padding-left: 1.5in; /* 1.5-inch left margin */
       white-space: nowrap;
       overflow: hidden;
-      width: 0;
       border-right: 0.15em solid red;
-      animation: none;
     }
     @keyframes typing {
       from {
@@ -95,7 +93,6 @@
   }
 </style>
 
-<
 <script>
   let gifs = document.querySelectorAll('#fullscreen-gifs img');
   let textContainer = document.getElementById('text-container');
@@ -104,21 +101,19 @@
   function nextGif() {
     if (currentGif < gifs.length) {
       gifs[currentGif].style.display = 'block';
-      gifs[currentGif].style.zIndex = currentGif;
+      gifs[currentGif].style.zIndex = -1; // behind the text
       if (currentGif > 0) {
         gifs[currentGif - 1].style.display = 'none';
       }
       
       // Start text animation and last GIF loop at the same time
       if (currentGif === gifs.length - 1) {
-        textContainer.style.zIndex = 1; // Ensure the text is on top of the GIF
         textContainer.style.animation = 'typing 20s steps(400, end) forwards, blink-caret 0.75s step-end infinite';
-
-        // Fade out the last GIF after the text animation
         setTimeout(function() {
           gifs[gifs.length - 1].style.animation = 'fadeOut 3s forwards';
         }, 20000);
       }
+
       currentGif++;
       setTimeout(nextGif, 1000);
     }
@@ -126,7 +121,6 @@
   
   nextGif();
 </script>
-
 
 </body>
 </html>
