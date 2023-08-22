@@ -3,6 +3,19 @@
 <head>
   <title>My GitHub Page</title>
   <style>
+    /* Fullscreen GIFs */
+    #fullscreen-gifs img {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      display: none;
+    }
+
+    /* Body and text styling */
     body {
       background-color: black;
       color: red;
@@ -18,8 +31,9 @@
       text-align: left;
       white-space: nowrap;
       overflow: hidden;
-      width: 100%; /* Adjust this to control the width of the typing animation */
-      animation: typing 2s steps(80), blink-caret 0.75s step-end infinite;
+      width: 0;
+      border-right: 0.15em solid red;
+      animation: none; /* Set initially to none */
     }
     @keyframes typing {
       from {
@@ -37,43 +51,68 @@
         border-color: red;
       }
     }
-    a {
-      color: red;
-      text-decoration: none;
-      font-size: 1.5rem;
-      margin: 10px;
-      display: block;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div id="fullscreen-gifs">
+    <!-- Put your gifs here -->
+    <img src="https://i.pinimg.com/originals/56/0f/c3/560fc351465da1eae441080890059006.gif">
+    <img src="https://i.pinimg.com/originals/bd/f5/59/bdf559420e068bb8881cdb0441409951.gif">
+    <img src="https://i.pinimg.com/originals/7a/7a/74/7a7a74339c6e76edc9ba4c608216d531.gif">
+    <!-- Add more gifs... -->
+  </div>
+  
+  <div class="container" id="text-container">
     <pre>
-      &lt;!DOCTYPE html&gt;
-      &lt;html&gt;
-      &lt;head&gt;
-        &lt;title&gt;My GitHub Page&lt;/title&gt;
-        &lt;style&gt;
-          body {
-            /* Your CSS styles here */
-          }
-        &lt;/style&gt;
-      &lt;/head&gt;
-      &lt;body&gt;
-        &lt;div class="container"&gt;
-          &lt;a href="https://github.com/Metaverse-Crowdsource/EEG-tES-Chaos-Neural-Net" target="_blank"&gt;EEG-tES-Chaos-Neural-Net GitHub&lt;/a&gt;
-          &lt;a href="https://discord.gg/HBHGvDxDmt" target="_blank"&gt;Metaverse Crowdsource&lt;/a&gt;
-          &lt;a href="https://github.com/Metaverse-Crowdsource/Bacteria-Neural-Network" target="_blank"&gt;Bacteria-Neural-Network GitHub&lt;/a&gt;
-          &lt;a href="https://discord.gg/Q4zV9UTD" target="_blank"&gt;Player Two - Neocadia Labs&lt;/a&gt;
-          &lt;a href="https://github.com/soulsyrup" target="_blank"&gt;norm github&lt;/a&gt;
-        &lt;/div&gt;
-      &lt;/body&gt;
-      &lt;/html&gt;
+      <pre>
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My GitHub Page&lt;/title&gt;
+    &lt;style&gt;
+      body {
+        /* Your CSS styles here */
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="container"&gt;
+      &lt;a href="https://github.com/Metaverse-Crowdsource/EEG-tES-Chaos-Neural-Net" target="_blank"&gt;EEG-tES-Chaos-Neural-Net GitHub&lt;/a&gt;
+      &lt;a href="https://discord.gg/HBHGvDxDmt" target="_blank"&gt;Metaverse Crowdsource&lt;/a&gt;
+      &lt;a href="https://github.com/Metaverse-Crowdsource/Bacteria-Neural-Network" target="_blank"&gt;Bacteria-Neural-Network GitHub&lt;/a&gt;
+      &lt;a href="https://discord.gg/Q4zV9UTD" target="_blank"&gt;Player Two - Neocadia Labs&lt;/a&gt;
+      &lt;a href="https://github.com/soulsyrup" target="_blank"&gt;norm github&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
+</pre>
+
     </pre>
   </div>
+
+  <script>
+    // JavaScript to control GIFs and typing
+    let gifs = document.querySelectorAll('#fullscreen-gifs img');
+    let textContainer = document.getElementById('text-container');
+    let currentGif = 0;
+
+    function nextGif() {
+      if (currentGif < gifs.length) {
+        gifs[currentGif].style.display = 'block';
+        gifs[currentGif].style.zIndex = currentGif;
+        if (currentGif > 0) {
+          gifs[currentGif - 1].style.display = 'none';
+        }
+        currentGif++;
+        setTimeout(nextGif, 5000); // Set how long each GIF displays (in ms)
+      } else {
+        // Start typing animation
+        textContainer.style.animation = 'typing 20s steps(400, end) forwards, blink-caret 0.75s step-end infinite';
+      }
+    }
+
+    nextGif();
+  </script>
 </body>
 </html>
 
