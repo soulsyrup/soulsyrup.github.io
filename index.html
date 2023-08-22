@@ -97,7 +97,6 @@
 
 <
 <script>
-  // JavaScript to control GIFs and typing
   let gifs = document.querySelectorAll('#fullscreen-gifs img');
   let textContainer = document.getElementById('text-container');
   let currentGif = 0;
@@ -109,26 +108,25 @@
       if (currentGif > 0) {
         gifs[currentGif - 1].style.display = 'none';
       }
-      currentGif++;
-
-      // Check if it's the last GIF
-      if (currentGif === gifs.length) {
-        // Loop the last GIF while the typing animation is going on
-        gifs[gifs.length - 1].style.animation = 'none'; // Clear any previous fadeOut animation
+      
+      // Start text animation and last GIF loop at the same time
+      if (currentGif === gifs.length - 1) {
+        textContainer.style.zIndex = 1; // Ensure the text is on top of the GIF
         textContainer.style.animation = 'typing 20s steps(400, end) forwards, blink-caret 0.75s step-end infinite';
 
-        // Fade out the last GIF after the typing animation is complete
+        // Fade out the last GIF after the text animation
         setTimeout(function() {
           gifs[gifs.length - 1].style.animation = 'fadeOut 3s forwards';
-        }, 20000); // Corresponds to the 20s duration of the typing animation
-      } else {
-        setTimeout(nextGif, 1000); // 1 second per GIF
+        }, 20000);
       }
+      currentGif++;
+      setTimeout(nextGif, 1000);
     }
   }
-
+  
   nextGif();
 </script>
+
 
 </body>
 </html>
