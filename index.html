@@ -15,6 +15,16 @@
       display: none;
     }
 
+    /* Add a fading effect */
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
     /* Body and text styling */
     body {
       background-color: black;
@@ -33,7 +43,7 @@
       overflow: hidden;
       width: 0;
       border-right: 0.15em solid red;
-      animation: none; /* Set initially to none */
+      animation: none;
     }
     @keyframes typing {
       from {
@@ -58,39 +68,32 @@
     <img src="https://i.pinimg.com/originals/56/0f/c3/560fc351465da1eae441080890059006.gif">
     <img src="https://i.pinimg.com/originals/bd/f5/59/bdf559420e068bb8881cdb0441409951.gif">
     <img src="https://i.pinimg.com/originals/7a/7a/74/7a7a74339c6e76edc9ba4c608216d531.gif">
-    <img src="https://i.pinimg.com/originals/56/0f/c3/560fc351465da1eae441080890059006.gif">
-    <img src="https://i.pinimg.com/originals/bd/f5/59/bdf559420e068bb8881cdb0441409951.gif">
-    <img src="https://i.pinimg.com/originals/7a/7a/74/7a7a74339c6e76edc9ba4c608216d531.gif">    
-    <img src="https://i.pinimg.com/originals/56/0f/c3/560fc351465da1eae441080890059006.gif">
+    <img src="https://i.pinimg.com/originals/f6/58/96/f6589607383a1903ce315d712b13650e.gif">
+    <img src="https://i.pinimg.com/originals/c7/79/96/c77996c1deead03277d5e0c2bb122624.gif">
+    <img src="https://i.pinimg.com/originals/ec/3e/61/ec3e61d93c3efc61c5438ec0af0d856e.gif">    
+    <img src="https://i.pinimg.com/originals/c1/42/55/c14255d117ec720722bcaa0496e871bf.gif">
+    <img src="https://i.pinimg.com/originals/87/8c/4e/878c4e5b4ac97caf16374801f7abad5e.gif">
   </div>
   
   <div class="container" id="text-container">
-    <pre>
-      <pre>
-  &lt;!DOCTYPE html&gt;
-  &lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;My GitHub Page&lt;/title&gt;
-    &lt;style&gt;
-      body {
-        /* Your CSS styles here */
-      }
-    &lt;/style&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;div class="container"&gt;
-      &lt;a href="https://github.com/Metaverse-Crowdsource/EEG-tES-Chaos-Neural-Net" target="_blank"&gt;EEG-tES-Chaos-Neural-Net GitHub&lt;/a&gt;
-      &lt;a href="https://discord.gg/HBHGvDxDmt" target="_blank"&gt;Metaverse Crowdsource&lt;/a&gt;
-      &lt;a href="https://github.com/Metaverse-Crowdsource/Bacteria-Neural-Network" target="_blank"&gt;Bacteria-Neural-Network GitHub&lt;/a&gt;
-      &lt;a href="https://discord.gg/Q4zV9UTD" target="_blank"&gt;Player Two - Neocadia Labs&lt;/a&gt;
-      &lt;a href="https://github.com/soulsyrup" target="_blank"&gt;norm github&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-  &lt;/html&gt;
-</pre>
-
-    </pre>
+  <a href="https://github.com/Metaverse-Crowdsource/EEG-tES-Chaos-Neural-Net" target="_blank">EEG-tES-Chaos-Neural-Net GitHub</a><br>
+  <a href="https://discord.gg/HBHGvDxDmt" target="_blank">Metaverse Crowdsource</a><br>
+  <a href="https://github.com/Metaverse-Crowdsource/Bacteria-Neural-Network" target="_blank">Bacteria-Neural-Network GitHub</a><br>
+  <a href="https://discord.gg/Q4zV9UTD" target="_blank">Player Two - Neocadia Labs</a><br>
+  <a href="https://github.com/soulsyrup" target="_blank">norm github</a><br>
   </div>
+
+<style>
+  /* Add a fading effect */
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+</style>
 
 <script>
   // JavaScript to control GIFs and typing
@@ -106,15 +109,21 @@
         gifs[currentGif - 1].style.display = 'none';
       }
       currentGif++;
-      setTimeout(nextGif, 1000); // Set how long each GIF displays (in ms)
+      setTimeout(nextGif, 1000); // 1 second per GIF
     } else {
-      // Remove the last GIF
-      gifs[gifs.length - 1].style.display = 'none';
+      // Loop the last GIF
+      gifs[gifs.length - 1].style.display = 'block';
+      
       // Start typing animation
       textContainer.style.animation = 'typing 20s steps(400, end) forwards, blink-caret 0.75s step-end infinite';
+
+      // After the typing animation, fade out the last GIF
+      setTimeout(function() {
+        gifs[gifs.length - 1].style.animation = 'fadeOut 3s forwards';
+      }, 20000); // Corresponds to the 20s duration of the typing animation
     }
   }
-
+  
   nextGif();
 </script>
 
