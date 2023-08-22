@@ -55,11 +55,13 @@
 </head>
 <body>
   <div id="fullscreen-gifs">
-    <!-- Put your gifs here -->
     <img src="https://i.pinimg.com/originals/56/0f/c3/560fc351465da1eae441080890059006.gif">
     <img src="https://i.pinimg.com/originals/bd/f5/59/bdf559420e068bb8881cdb0441409951.gif">
     <img src="https://i.pinimg.com/originals/7a/7a/74/7a7a74339c6e76edc9ba4c608216d531.gif">
-    <!-- Add more gifs... -->
+    <img src="https://i.pinimg.com/originals/56/0f/c3/560fc351465da1eae441080890059006.gif">
+    <img src="https://i.pinimg.com/originals/bd/f5/59/bdf559420e068bb8881cdb0441409951.gif">
+    <img src="https://i.pinimg.com/originals/7a/7a/74/7a7a74339c6e76edc9ba4c608216d531.gif">    
+    <img src="https://i.pinimg.com/originals/56/0f/c3/560fc351465da1eae441080890059006.gif">
   </div>
   
   <div class="container" id="text-container">
@@ -90,29 +92,32 @@
     </pre>
   </div>
 
-  <script>
-    // JavaScript to control GIFs and typing
-    let gifs = document.querySelectorAll('#fullscreen-gifs img');
-    let textContainer = document.getElementById('text-container');
-    let currentGif = 0;
+<script>
+  // JavaScript to control GIFs and typing
+  let gifs = document.querySelectorAll('#fullscreen-gifs img');
+  let textContainer = document.getElementById('text-container');
+  let currentGif = 0;
 
-    function nextGif() {
-      if (currentGif < gifs.length) {
-        gifs[currentGif].style.display = 'block';
-        gifs[currentGif].style.zIndex = currentGif;
-        if (currentGif > 0) {
-          gifs[currentGif - 1].style.display = 'none';
-        }
-        currentGif++;
-        setTimeout(nextGif, 5000); // Set how long each GIF displays (in ms)
-      } else {
-        // Start typing animation
-        textContainer.style.animation = 'typing 20s steps(400, end) forwards, blink-caret 0.75s step-end infinite';
+  function nextGif() {
+    if (currentGif < gifs.length) {
+      gifs[currentGif].style.display = 'block';
+      gifs[currentGif].style.zIndex = currentGif;
+      if (currentGif > 0) {
+        gifs[currentGif - 1].style.display = 'none';
       }
+      currentGif++;
+      setTimeout(nextGif, 1000); // Set how long each GIF displays (in ms)
+    } else {
+      // Remove the last GIF
+      gifs[gifs.length - 1].style.display = 'none';
+      // Start typing animation
+      textContainer.style.animation = 'typing 20s steps(400, end) forwards, blink-caret 0.75s step-end infinite';
     }
+  }
 
-    nextGif();
-  </script>
+  nextGif();
+</script>
+
 </body>
 </html>
 
