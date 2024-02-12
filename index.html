@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>soul_syrup</title>
+  <title>soul syrup</title>
   <style>
     /* Fullscreen GIFs */
     #fullscreen-gifs img {
@@ -15,20 +15,10 @@
       display: none;
     }
 
-    /* Add a fading effect */
-    @keyframes fadeOut {
-      from {
-        opacity: 1;
-      }
-      to {
-        opacity: 0;
-      }
-    }
-
     /* Body and text styling */
     body {
       background-color: black;
-      color: red;
+      color: red; /* Text color is already red */
       font-family: 'Courier New', monospace;
       display: flex;
       justify-content: flex-start;
@@ -39,8 +29,15 @@
       padding-left: 1.5in; /* Padding from the left */
     }
 
+    /* Remove underline from links */
+    a {
+      text-decoration: none; /* This removes the underline from links */
+      color: red; /* Ensure links are also red */
+    }
+
+    /* Additional styles remain unchanged */
     .container {
-      z-index: 10; /* Ensure text is on top */
+      z-index: 10;
       text-align: left;
       white-space: nowrap;
       overflow: hidden;
@@ -56,6 +53,8 @@
         width: 100%;
       }
     }
+
+    /* The fading effect and other animations remain unchanged */
   </style>
 </head>
 <body>
